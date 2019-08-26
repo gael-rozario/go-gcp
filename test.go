@@ -13,10 +13,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//fmt.Printf("%#v", instancelist.Items)
 	for _, instance := range instancelist.Items{
-		for _, interface := range instance.NetworkInterfaces{
-			
+		for _, netinter := range instance.NetworkInterfaces{
+			fmt.Println(netinter.NetworkIP)
 		}
 	}
 }
