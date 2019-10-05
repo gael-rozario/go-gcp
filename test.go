@@ -13,9 +13,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	for _, instance := range instancelist.Items{
-		for _, netinter := range instance.NetworkInterfaces{
-			fmt.Println(netinter.NetworkIP)
-		}
+	for _, instance := range instancelist {
+		fmt.Println(instance)
 	}
 }
