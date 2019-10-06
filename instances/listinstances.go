@@ -3,15 +3,14 @@ package instances
 import (
 	"context"
 	"log"
-
 	compute "google.golang.org/api/compute/v1"
 )
 
 //GetAllInstances list all instances in the project
-func GetAllInstances(project string) ([]*compute.Instance, error) {
+func GetAllInstances(project string) ([]*compute.Instance, error){
+	instanceList := make([]*compute.Instance,0)
 	ctx := context.Background()
 	computeclient, err := compute.NewService(ctx)
-	instanceList := make([]*compute.Instance, 0)
 	zones := GetZones(project)
 	if err != nil {
 		return nil, err
@@ -21,8 +20,8 @@ func GetAllInstances(project string) ([]*compute.Instance, error) {
 		if err != nil {
 			return nil, err
 		}
-		for _, instance := range response.Items {
-			instanceList = append(instanceList, instance)
+		for _,instance := range response.Items{
+			instanceList= append(instanceList,instance)
 		}
 	}
 	return instanceList, nil
